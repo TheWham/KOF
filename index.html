@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拳皇</title>
+    <link rel="stylesheet" href="/static/css/base.css">
+    <script src="https://cdn.acwing.com/static/jquery/js/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+    <div id="div-1"></div>
+    <script type="module">
+        import { KOF } from '/static/js/base.js';
+        import { time } from '/static/js/game_map/time.js';
+        let kof = new KOF('div-1');
+        time(kof, (result) => {
+            if (result) {
+                let [a, b] = kof.players;
+                if (a.status !== 6 && b.status !== 6) {
+                    a.status = b.status = 6;
+                    a.frame_current_cnt = b.frame_current_cnt = 0;
+                    a.vx = b.vx = 0;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
